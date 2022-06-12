@@ -1,0 +1,38 @@
+server:
+  port: 8023
+
+spring:
+  shardingsphere:
+    props:
+      sql:
+        show:
+          true
+#    datasource:
+#      names: ds1,ds2
+#      ds1:
+#        type: com.alibaba.druid.pool.DruidDataSource
+#        driverClassName: com.mysql.cj.jdbc.Driver
+#        jdbc-url: jdbc:mysql://127.0.0.1:3306/acme?serverTimezone=Asia/Shanghai&useSSL=false
+#        username: root
+#        password: root
+#      ds2:
+#        type: com.alibaba.druid.pool.DruidDataSource
+#        driverClassName: com.mysql.cj.jdbc.Driver
+#        jdbc-url: jdbc:mysql://172.17.90.226:3306/acme?serverTimezone=Asia/Shanghai&useSSL=false
+#        username: root
+#        password: biosan#17
+#    sharding:
+#      defaultDatabaseStrategy:
+#        hint:
+#          algorithmClassName: com.hk.shardingsphere.MyHintDatasourceRoutingAlgorithm
+#        standard:
+#          precise-algorithm-class-name: com.hk.shardingsphere.MyHintDatasourceRoutingAlgorithm
+#      tables:
+#        aaatest:
+#          actualDataNodes: ds1.aaatest
+#      defaultTableStrategy:
+#        none:
+#          any: ""
+
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml

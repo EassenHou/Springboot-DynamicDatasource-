@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.eassen.mydynamicdatasource.dao.AaaConfigDao">
+
+    <resultMap type="cn.eassen.mydynamicdatasource.entity.AaaConfig" id="AaaConfigtMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="centerId" column="centerid" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="queryByCenterId" resultMap="AaaConfigtMap">
+        select
+          id, name, centerid
+        from aaa_config
+        where centerid = #{centerid}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from aaa_config
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert">
+        insert into aaa_config(id, name, centerid)
+        values (#{id}, #{name},#{centerId})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into aaa_config(name)
+        values
+        <foreach collection="entities" item="cn.eassen.mydynamicdatasource.entity" separator=",">
+        (#{entity.name})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into aaa_config(name)
+        values
+        <foreach collection="entities" item="cn.eassen.mydynamicdatasource.entity" separator=",">
+            (#{entity.name})
+        </foreach>
+        on duplicate key update
+        name = values(name)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update aaa_config
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteByCenterId">
+        delete from aaa_config where centerid = #{centerId}
+    </delete>
+
+</mapper>
+
