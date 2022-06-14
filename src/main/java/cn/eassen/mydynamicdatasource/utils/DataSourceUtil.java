@@ -22,6 +22,7 @@ public final class DataSourceUtil {
     public static DataSource createDataSource(final String dataSourceName,
                                               final String host){
         DruidDataSource result = new DruidDataSource();
+        result.setDbType("com.alibaba.druid.pool.DruidDataSource");
         result.setDriverClassName(com.mysql.cj.jdbc.Driver.class.getName());
         result.setUrl(String.format("jdbc:mysql://%s:%s/acme?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8",
                 host, PORT));

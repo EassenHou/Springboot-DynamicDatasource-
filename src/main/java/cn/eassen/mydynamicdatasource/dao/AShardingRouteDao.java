@@ -2,7 +2,9 @@ package cn.eassen.mydynamicdatasource.dao;
 
 
 import cn.eassen.mydynamicdatasource.route.entity.ShardingRoute;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -12,6 +14,7 @@ import java.util.List;
  * @author Auto
  * @since 2022-06-09 16:03:26
  */
+@Mapper
 public interface AShardingRouteDao {
 
     /**

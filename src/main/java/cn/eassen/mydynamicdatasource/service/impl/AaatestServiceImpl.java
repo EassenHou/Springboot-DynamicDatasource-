@@ -4,6 +4,8 @@ import cn.eassen.mydynamicdatasource.dao.AaatestDao;
 import cn.eassen.mydynamicdatasource.entity.AaaSubTest;
 import cn.eassen.mydynamicdatasource.entity.Aaatest;
 import cn.eassen.mydynamicdatasource.service.AaatestService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -22,6 +24,8 @@ public class AaatestServiceImpl implements AaatestService {
 
     @Resource
     private AaatestDao aaatestDao;
+    @Autowired
+    ApplicationContext applicationContext;
 
     /**
      * 通过ID查询单条数据
@@ -31,11 +35,11 @@ public class AaatestServiceImpl implements AaatestService {
      */
     @Override
     public List<Aaatest> queryByCenterId(String centerid) {
-        List<Aaatest> aaatests = this.aaatestDao.queryByCenterId(centerid);
-        if(CollectionUtils.isEmpty(aaatests)){
+        List<Aaatest> attests = this.aaatestDao.queryByCenterId(centerid);
+        if(CollectionUtils.isEmpty(attests)){
             return new ArrayList<>();
         }
-        return aaatests;
+        return attests;
     }
 
     /**

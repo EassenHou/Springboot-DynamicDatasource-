@@ -11,12 +11,6 @@
         <result property="shard" column="shard" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <resultMap type="cn.eassen.mydynamicdatasource.route.entity.ShardingRoute" id="1223q4">
-        <result property="centerId" column="center_id" jdbcType="VARCHAR"/>
-        <result property="dbNode" column="db_node" jdbcType="VARCHAR"/>
-        <result property="tbNode" column="tb_node" jdbcType="VARCHAR"/>
-    </resultMap>
-
     <!--查询单个-->
     <select id="queryByCenterId" resultMap="ShardingRouteMap">
         select
@@ -25,8 +19,8 @@
         where enable = 1 and center_id = #{centerId}
     </select>
 
-    <select id="queryAll" resultMap="1223q4">
-        select *
+    <select id="queryAll" resultMap="ShardingRouteMap">
+        select center_id,  db_node, tb_node
         from a_sharding_route
     </select>
 </mapper>

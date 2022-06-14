@@ -2,34 +2,34 @@ server:
   port: 8023
 
 spring:
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
   shardingsphere:
     props:
       sql:
         show:
           true
-#    datasource:
-#      names: ds1,ds2
-#      ds1:
-#        type: com.alibaba.druid.pool.DruidDataSource
-#        driverClassName: com.mysql.cj.jdbc.Driver
-#        jdbc-url: jdbc:mysql://127.0.0.1:3306/acme?serverTimezone=Asia/Shanghai&useSSL=false
-#        username: root
-#        password: root
-#      ds2:
-#        type: com.alibaba.druid.pool.DruidDataSource
-#        driverClassName: com.mysql.cj.jdbc.Driver
-#        jdbc-url: jdbc:mysql://172.17.90.226:3306/acme?serverTimezone=Asia/Shanghai&useSSL=false
-#        username: root
-#        password: biosan#17
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/acme?serverTimezone=Asia/Shanghai&useSSL=false
+        username: root
+        password: biosan#17
+      ds1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://172.17.90.226:3306/acme?serverTimezone=Asia/Shanghai&useSSL=false
+        username: root
+        password: biosan#17
 #    sharding:
 #      defaultDatabaseStrategy:
-#        hint:
-#          algorithmClassName: com.hk.shardingsphere.MyHintDatasourceRoutingAlgorithm
-#        standard:
-#          precise-algorithm-class-name: com.hk.shardingsphere.MyHintDatasourceRoutingAlgorithm
-#      tables:
-#        aaatest:
-#          actualDataNodes: ds1.aaatest
+#        complex:
+#          algorithm-class-name: cn.eassen.mydynamicdatasource.shardingsphere.MyComplexDatasourceRoutingAlgorithm
+#          sharding-columns: centerid, center_id, centerId
+#
 #      defaultTableStrategy:
 #        none:
 #          any: ""
