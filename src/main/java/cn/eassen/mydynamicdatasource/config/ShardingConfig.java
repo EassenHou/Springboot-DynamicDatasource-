@@ -84,7 +84,9 @@ public class ShardingConfig {
         // 分片规则列表
         addTableShardingStrategyConfig(shardingRuleConfig);
         // 绑定表规则列表（多表联合查询）
-        shardingRuleConfig.getBindingTableGroups().add("aaa_test, aaa_test_sub");
+//        shardingRuleConfig.getBindingTableGroups().add("aaa_test, aaa_test_sub");
+//        shardingRuleConfig.getBindingTableGroups().add("aaa_test_sub, aaa_test_sub_sub");
+        shardingRuleConfig.getBindingTableGroups().add("aaa_test, aaa_test_sub, aaa_test_sub_sub");
         // 广播表配置 （配置表，所有分片一致）
         shardingRuleConfig.getBroadcastTables().add("aaa_config");
         // 默认分库策略
@@ -109,6 +111,7 @@ public class ShardingConfig {
         tableRuleConfigs.add(getHintTableRuleConfiguration("a_sharding_route", "ds0.a_sharding_route"));
         tableRuleConfigs.add(getTableRuleConfiguration("aaa_test", "ds${0..1}.aaa_test"));
         tableRuleConfigs.add(getTableRuleConfiguration("aaa_test_sub", "ds${0..1}.aaa_test_sub"));
+        tableRuleConfigs.add(getTableRuleConfiguration("aaa_test_sub_sub", "ds${0..1}.aaa_test_sub_sub"));
     }
 
     private static KeyGeneratorConfiguration getKeyGeneratorConfiguration() {

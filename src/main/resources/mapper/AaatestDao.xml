@@ -16,6 +16,13 @@
         <result property="testId" column="test_id" jdbcType="VARCHAR"/>
     </resultMap>
 
+    <resultMap type="cn.eassen.mydynamicdatasource.entity.AaaSubSubTest" id="AaaTestSubSubMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="centerId" column="centerid" jdbcType="VARCHAR"/>
+        <result property="subTestId" column="sub_test_id" jdbcType="VARCHAR"/>
+    </resultMap>
+
     <select id="queryByCenterId" resultMap="AaatestMap">
         select
           id, name, centerid
@@ -54,11 +61,17 @@
         </where>
     </select>
     
-    <select id="queryList" resultMap="AaaTestSubMap">
-        select  ats.id, ats.test_id, ats.name, ats.centerid
-        from aaa_test atest left join aaa_test_sub ats
-        on atest.id = ats.test_id and atest.centerid = ats.centerid
+    <select id="queryList" resultMap="AaaTestSubSubMap">
+        select  ats.id, ats.test_id, tss.name, ats.centerid
+        from aaa_test atest
+        left join aaa_test_sub ats
+            on atest.id = ats.test_id and atest.centerid = ats.centerid
+        left join aaa_test_sub_sub tss
+            on ats.id = tss.sub_test_id and ats.centerid = tss.centerid
         where atest.id = #{id}
+        and atest.centerid = #{centerId}
+        and ats.centerid = #{centerId}
+        and tss.centerid = #{centerId}
     </select>
 
     <!--新增所有列-->

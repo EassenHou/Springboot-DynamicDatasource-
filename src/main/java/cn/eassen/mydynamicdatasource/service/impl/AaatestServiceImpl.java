@@ -1,6 +1,7 @@
 package cn.eassen.mydynamicdatasource.service.impl;
 
 import cn.eassen.mydynamicdatasource.dao.AaatestDao;
+import cn.eassen.mydynamicdatasource.entity.AaaSubSubTest;
 import cn.eassen.mydynamicdatasource.entity.AaaSubTest;
 import cn.eassen.mydynamicdatasource.entity.Aaatest;
 import cn.eassen.mydynamicdatasource.service.AaatestService;
@@ -78,7 +79,7 @@ public class AaatestServiceImpl implements AaatestService {
     }
 
     @Override
-    public List<AaaSubTest> queryList(Aaatest queryInfo) {
+    public List<AaaSubSubTest> queryList(Aaatest queryInfo) {
         return aaatestDao.queryList(queryInfo);
     }
 

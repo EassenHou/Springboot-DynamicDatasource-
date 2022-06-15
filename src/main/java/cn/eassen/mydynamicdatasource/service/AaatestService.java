@@ -1,5 +1,6 @@
 package cn.eassen.mydynamicdatasource.service;
 
+import cn.eassen.mydynamicdatasource.entity.AaaSubSubTest;
 import cn.eassen.mydynamicdatasource.entity.AaaSubTest;
 import cn.eassen.mydynamicdatasource.entity.Aaatest;
 import org.apache.ibatis.annotations.Mapper;
@@ -51,7 +52,7 @@ public interface AaatestService {
      * @param queryInfo
      * @return
      */
-    List<AaaSubTest> queryList(Aaatest queryInfo);
+    List<AaaSubSubTest> queryList(Aaatest queryInfo);
 
     /**
      * 查询

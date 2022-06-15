@@ -41,6 +41,8 @@ public class MyComplexDatasourceRoutingAlgorithm implements ComplexKeysShardingA
         if (!first.isPresent() || "".equals(first.get())) {
             return Lists.newArrayList(DEFAULT_DS);
         }
-        return getDatabases(first.get());
+        List<String> databases = getDatabases(first.get());
+        log.info("分片策略选择Complex， 数据源选择======> {}", databases);
+        return databases;
     }
 }

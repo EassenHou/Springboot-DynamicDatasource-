@@ -1,5 +1,6 @@
 package cn.eassen.mydynamicdatasource.controller;
 
+import cn.eassen.mydynamicdatasource.entity.AaaSubSubTest;
 import cn.eassen.mydynamicdatasource.entity.AaaSubTest;
 import cn.eassen.mydynamicdatasource.entity.Aaatest;
 import cn.eassen.mydynamicdatasource.service.AaatestService;
@@ -30,7 +31,7 @@ public class MyController {
     }
 
     @RequestMapping(value = "/select/list", method = RequestMethod.GET)
-    public ResponseEntity<List<AaaSubTest>> selectByQueryInfo (@ModelAttribute Aaatest queryInfo){
+    public ResponseEntity<List<AaaSubSubTest>> selectByQueryInfo (@ModelAttribute Aaatest queryInfo){
         return ResponseEntity.ok(aaatestService.queryList(queryInfo));
     }
 
