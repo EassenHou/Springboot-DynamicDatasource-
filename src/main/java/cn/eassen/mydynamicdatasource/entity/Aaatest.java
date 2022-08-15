@@ -12,13 +12,15 @@ import java.util.List;
  * @since 2022-05-30 16:36:31
  */
 @Data
-public class Aaatest{
+public class Aaatest {
 
     private Integer id;
-    
+
     private String name;
 
     private String centerId;
+
+    private List<String> centerIds;
 
     List<AaaSubTest> subs;
 }

@@ -24,8 +24,9 @@
     </resultMap>
 
     <select id="queryByCenterId" resultMap="AaatestMap">
-        select
-          id, name, centerid
+        select id,
+               name,
+               centerid
         from aaa_test
         where centerid = #{centerid}
     </select>
@@ -45,7 +46,7 @@
     </select>
 
     <select id="query" resultMap="AaatestMap">
-        select  id, name, centerid
+        select id, name, centerid
         from aaa_test
         <where>
             1=1
@@ -58,20 +59,26 @@
             <if test="centerId != null and centerId != ''">
                 and centerid = #{centerId}
             </if>
+            <if test="centerIds != null and centerIds.size()>0">
+                and centerid in
+                <foreach collection="centerIds" open="(" close=")" separator="," item="centerId">
+                    #{centerId}
+                </foreach>
+            </if>
         </where>
     </select>
-    
+
     <select id="queryList" resultMap="AaaTestSubSubMap">
-        select  ats.id, ats.test_id, tss.name, ats.centerid
+        select ats.id, ats.test_id, tss.name, ats.centerid
         from aaa_test atest
-        left join aaa_test_sub ats
-            on atest.id = ats.test_id and atest.centerid = ats.centerid
-        left join aaa_test_sub_sub tss
-            on ats.id = tss.sub_test_id and ats.centerid = tss.centerid
+                 left join aaa_test_sub ats
+                           on atest.id = ats.test_id and atest.centerid = ats.centerid
+                 left join aaa_test_sub_sub tss
+                           on ats.id = tss.sub_test_id and ats.centerid = tss.centerid
         where atest.id = #{id}
-        and atest.centerid = #{centerId}
-        and ats.centerid = #{centerId}
-        and tss.centerid = #{centerId}
+          and atest.centerid = #{centerId}
+          and ats.centerid = #{centerId}
+          and tss.centerid = #{centerId}
     </select>
 
     <!--新增所有列-->
@@ -84,7 +91,7 @@
         insert into aaa_test(name)
         values
         <foreach collection="entities" item="cn.eassen.mydynamicdatasource.entity" separator=",">
-        (#{entity.name})
+            (#{entity.name})
         </foreach>
     </insert>
 
@@ -111,7 +118,10 @@
 
     <!--通过主键删除-->
     <delete id="delete">
-        delete from aaa_test where id = #{id} and centerid = #{centerId}
+        delete
+        from aaa_test
+        where id = #{id}
+          and centerid = #{centerId}
     </delete>
 
 </mapper>

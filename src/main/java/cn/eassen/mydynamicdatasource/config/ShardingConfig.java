@@ -58,7 +58,7 @@ public class ShardingConfig {
 
     static MyComplexDatasourceRoutingAlgorithm myComplexDatasourceRoutingAlgorithm;
 
-    private final static String SHARDING_COLUMNS = "centerid, center_id, centerId, ownerid";
+    private final static String SHARDING_COLUMNS = "centerid, center_id, centerId, ownerid, centerIds";
 
 
     public ConcurrentHashMap<String, List<String>> shardingRouteMap() {

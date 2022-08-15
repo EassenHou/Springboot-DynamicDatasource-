@@ -46,5 +46,4 @@ public interface AaaConfigService {
      * @return 是否成功
      */
     boolean deleteByCenterId(String centerId);
-
 }

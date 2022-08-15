@@ -1,5 +1,6 @@
 package cn.eassen.mydynamicdatasource.service;
 
+import cn.eassen.mydynamicdatasource.entity.AaaConfig;
 import cn.eassen.mydynamicdatasource.entity.AaaSubSubTest;
 import cn.eassen.mydynamicdatasource.entity.AaaSubTest;
 import cn.eassen.mydynamicdatasource.entity.Aaatest;
